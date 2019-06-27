@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>test handlebars.js</title>
+    <link rel="stylesheet" type="text/css" href="resources/vendors/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script type="text/javascript" src="./resources/vendors/jquery/1.12.4/jquery.min.js"></script>
+    <script src="./resources/vendors/handlebars/4.0.10/handlebars.js"></script>
+    <script id="entry-template" type="text/x-handlebars-template">
+        <div class="entry">
+            <h1>{{title}}</h1>
+            <div class="body">
+                {{body}}
+            </div>
+        </div>
+    </script>
+    <script type="text/javascript" charset="utf-8" async defer>
+    var source = $("#entry-template").html();
+    console.log(source);
+    var template = Handlebars.compile(source);
+    var context = {
+        title: "My New Post",
+        body: "This is my first post!"
+    }
+    var context = template(context);
+    console.log(context);
+    $("#tip").html(context).show();
+    </script>
+</head>
+
+<body>
+    <div class="main">
+        <div id="tip" class="alert alert-success" role="alert">
+        </div>
+    </div>
+</body>
+
+</html>

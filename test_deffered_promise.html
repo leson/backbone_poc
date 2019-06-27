@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>test require.js json</title>
+    <link rel="stylesheet" type="text/css" href="resources/vendors/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="main">
+        <div id="tip" class="alert alert-success" role="alert">
+            hello
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="./resources/vendors/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript">
+// dom 
+var domObj = $("#tip");
+domObj.promise().done(function(ele) {
+    console.log(ele[0].innerText);
+})
+
+// setinterval
+function doA() {
+    var def = $.Deferred();
+    //做一些异步操作
+    var task = function() {
+        console.log('doing something.');
+        // change the Deferred Object execution status manually.
+        def.resolve('my some data');
+        // def.reject();
+    }
+
+    setTimeout(task, 2000);
+    return def.promise(); //就在这里调用; return promise object.
+}
+
+// chain invoke method 1.
+// $.when(doA()).done(function(data) {
+//     console.log("great it's work！" + data);
+// }).fail(function() {
+//     console.log("seems have some issue.");
+// });
+
+// invoke method 2.
+doA().then(function(data) {
+    console.log("the data:[" + data + "]");
+});
+</script>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>test layer video</title>
+    <!-- <link rel="stylesheet" type="text/css" href="resources/vendors/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+    <script type="text/javascript" src="./resources/vendors/jquery/1.12.4/jquery.min.js"></script>
+    <script src="./resources/vendors/layer/dist/layer.js"></script>
+</head>
+
+<body>
+    <div class="container" style="text-align: center;">
+        <div id="sp">
+            <img src="./resources/images/tong.jpg" id="spdp" />
+            <div id="shipin" style="display: none">
+                <embed src="./resources/plugins/flvplayer.swf" allowfullscreen="true" autostart="false" loop="2" hidden="false" flashvars="vcastr_file=http://125.76.231.93:8088/static/upload/videos/company_introduce.flv&LogoText=www.xingfuzhiyao.com&IsAutoPlay=2" width="100%" height="100%" style="min-height:430px;"></embed>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+    $(document).ready(function() {
+
+        var showLayer = function() {
+            layer.open({
+                type: 1, //Page层类型
+                area: ['1000px'], // setup the layer's width and height
+                title: 'hello layer',
+                shade: 0.7, //遮罩透明度
+                shadeClose: true, // click the shade and close the layer.
+                maxmin: true, //允许全屏最小化
+                anim: 1, //0-6的动画形式，-1不开启
+                content: $("#shipin")
+            });
+        }
+
+        $("#spdp").on("click", function() {
+            showLayer();
+        });
+    });
+    </script>
+</body>
+
+</html>

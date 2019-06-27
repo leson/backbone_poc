@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /**
+         * define a binary tree class
+         */
+        function BinTree(){
+            /**
+             * define a node property.
+             */
+            var Node=function(key){
+                this.key=key;
+                this.left=null;
+                this.right=null;
+            };
+
+            /**
+             * define root node property.
+             */
+            var root=null;
+
+            /**
+             * define insertNode function
+             */
+            var insertNode=function(node,newNode){
+                if(newNode.key<node.key){
+                    if(node.left===null){
+                        node.left=newNode;
+                    }else{
+                        insertNode(node.left,newNode);
+                    }
+                }else{
+                    if(node.right===null){
+                        node.right=newNode;
+                    }else{
+                        insertNode(node.right,newNode);
+                    }
+                }
+            };
+
+            /** 
+             * define insert function.
+             */
+            this.insert= function(key){
+                var newNode=new Node(key);
+                if(root==null){
+                    root=newNode;
+                }else{
+                    insertNode(root,newNode);
+                }
+            };
+        }
+
+        var nodeList=[8,2,4,9,7];
+        var binTree=new BinTree();
+        nodeList.forEach(function(key){
+            binTree.insert(key);
+        });
+    </script>
+</body>
+</html>
